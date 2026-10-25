@@ -18,12 +18,8 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val intent = Intent(this, RegistroActivity::class.java).apply {
-            putExtra("CURSO_ID", 1)
-            putExtra("NOMBRE_CURSO", "PROGRAMACIÓN AVANZADA")
-
-            // Ruta exacta tomada de tu navegador con tu IP actual:
-            putExtra("IMAGEN_CURSO", "http://10.129.214.59/practicaMes/upload/cursos/principales/prog1.png")
+        val intent = Intent(this, DetalleCurso::class.java).apply {
+            putExtra("CURSO_ID", 1) // Enviamos el ID 1 para que PHP busque el curso en la BD
         }
 
         startActivity(intent)
