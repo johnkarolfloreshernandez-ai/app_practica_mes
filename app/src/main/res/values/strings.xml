@@ -1,3 +1,25 @@
+
 <resources>
-    <string name="app_name">app_practica_mes</string>
+    <string name="app_name">Cursos</string>
+
+    <!-- Botones -->
+    <string name="btn_back">← BACK</string>
+
+    <!-- Informacion del curso -->
+    <string name="nombre_curso">PROGRAMACIÓN AVANZADA</string>
+    <string name="codigo_curso">Código: IS102</string>
+    <string name="titulo_descripcion">DESCRIPCIÓN:</string>
+    <string name="descripcion_curso">En este curso aprenderás conceptos avanzados de programación, desarrollo de algoritmos y resolución de problemas mediante buenas prácticas de codificación.</string>
+
+    <string name="titulo_espacio">ESPACIO:</string>
+    <string name="espacio_curso">Edificio C, Salón C 3-10 </string>
+
+    <string name="titulo_horas">TOTAL HORAS:</string>
+    <string name="horas_curso">80 Horas</string>
+
+    <string name="titulo_dias">DÍAS DE ATENCIÓN:</string>
+    <string name="dias_curso">Lunes, Miércoles, Viernes\n(10:00 - 12:00 hrs)</string>
+
+    <!-- Descripcion de imagen -->
+    <string name="imagen_curso_desc">Estudiantes trabajando en programación</string>
 </resources>

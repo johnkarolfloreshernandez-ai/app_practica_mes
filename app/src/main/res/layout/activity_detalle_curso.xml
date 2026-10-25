@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -11,7 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Imagen principal y boton de regreso -->
+        <!-- Imagen principal del curso -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="220dp">
@@ -21,16 +20,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/curso_programacion"
-                android:contentDescription="Curso de programación" />
+                android:contentDescription="@string/imagen_curso_desc" />
 
+            <!-- Boton para regresar -->
             <Button
                 android:id="@+id/btnBack"
                 android:layout_width="wrap_content"
-                android:layout_height="42dp"
+                android:layout_height="48dp"
                 android:layout_gravity="top|start"
                 android:layout_margin="12dp"
-                android:text="← BACK"
+                android:text="@string/btn_back"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp"
                 android:backgroundTint="#145A83"
@@ -47,98 +46,109 @@
             android:orientation="vertical"
             android:padding="18dp">
 
+            <!-- Nombre del curso -->
             <TextView
                 android:id="@+id/txtNombreCurso"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="PROGRAMACIÓN AVANZADA"
+                android:text="@string/nombre_curso"
                 android:textColor="#111111"
                 android:textStyle="bold"
                 android:textSize="22sp" />
 
+            <!-- Codigo -->
             <TextView
                 android:id="@+id/txtCodigo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Código: IS102"
+                android:text="@string/codigo_curso"
                 android:textColor="#222222"
                 android:textSize="15sp" />
 
+            <!-- Titulo de descripcion -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
-                android:text="DESCRIPCIÓN:"
+                android:text="@string/titulo_descripcion"
                 android:textColor="#111111"
                 android:textStyle="bold"
                 android:textSize="16sp" />
 
+            <!-- Descripcion -->
             <TextView
                 android:id="@+id/txtDescripcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="En este curso aprenderás conceptos avanzados de programación, desarrollo de algoritmos y resolución de problemas mediante buenas prácticas de codificación."
+                android:text="@string/descripcion_curso"
                 android:textColor="#333333"
                 android:textSize="14sp"
                 android:lineSpacingExtra="3dp" />
 
+            <!-- Titulo del espacio -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
-                android:text="ESPACIO:"
+                android:text="@string/titulo_espacio"
                 android:textColor="#111111"
                 android:textStyle="bold"
                 android:textSize="16sp" />
 
+            <!-- Ubicacion -->
             <TextView
                 android:id="@+id/txtEspacio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Edificio C,Salón 3-10 "
+                android:text="@string/espacio_curso"
                 android:textColor="#333333"
                 android:textSize="14sp" />
 
+            <!-- Titulo de horas -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:text="TOTAL HORAS:"
+                android:text="@string/titulo_horas"
                 android:textColor="#111111"
                 android:textStyle="bold"
                 android:textSize="16sp" />
 
+            <!-- Total de horas -->
             <TextView
                 android:id="@+id/txtHoras"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="40 Horas"
+                android:text="@string/horas_curso"
                 android:textColor="#333333"
                 android:textSize="14sp" />
 
+            <!-- Titulo de dias de atencion -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:text="DÍAS DE ATENCIÓN:"
+                android:text="@string/titulo_dias"
                 android:textColor="#111111"
                 android:textStyle="bold"
                 android:textSize="16sp" />
 
+            <!-- Dias y horario -->
             <TextView
                 android:id="@+id/txtDias"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Lunes a jueves &#10;(14:00 - 16:00 hrs)"
+                android:text="@string/dias_curso"
                 android:textColor="#333333"
                 android:textSize="14sp" />
 
         </LinearLayout>
 
     </LinearLayout>
+
 </ScrollView>
