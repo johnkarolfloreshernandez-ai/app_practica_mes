@@ -1,5 +1,7 @@
 package com.example.app_practica_mes.Presentador
 
+import android.util.Log
+import com.example.app_practica_mes.Modelo.RetrofitCliente
 import com.example.app_practica_mes.Modelo.clsRegistroModelo
 import com.example.app_practica_mes.Vista.RegistroActivity
 import kotlinx.coroutines.CoroutineScope
@@ -8,9 +10,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 
-class clsRegistroPresentador (private val view: RegistroActivity){
+class clsRegistroPresentador (private val view: RegistroActivity) {
     private val modelo = clsRegistroModelo()
-
 
     fun cargarDatosCurso(nombreCurso: String, urlImagen: String) {
         if (urlImagen.isNotEmpty()) {
@@ -19,7 +20,6 @@ class clsRegistroPresentador (private val view: RegistroActivity){
     }
 
     fun realizarRegistro(cursoId: Int, matricula: String, fechaRegistro: String) {
-        // Validaciones previas en la vista
         if (cursoId <= 0 || matricula.isEmpty() || fechaRegistro.isEmpty()) {
             view.mostrarError("Por favor, completa todos los campos solicitados")
             return
@@ -32,10 +32,10 @@ class clsRegistroPresentador (private val view: RegistroActivity){
                 }
 
                 if (respuesta.isSuccessful) {
-                    val mensajeExito = respuesta.body()?.mensaje ?: "Inscripción registrada correctamente"
+                    val mensajeExito =
+                        respuesta.body()?.mensaje ?: "Inscripción registrada correctamente"
                     view.registroExitoso(mensajeExito)
                 } else {
-                    // Extrae el mensaje enviado por PHP (ej. 400 Bad Request o 404 Not Found)
                     val errorBody = respuesta.errorBody()?.string()
                     val mensajeError = try {
                         JSONObject(errorBody ?: "").getString("error")
@@ -46,6 +46,30 @@ class clsRegistroPresentador (private val view: RegistroActivity){
                 }
             } catch (e: Exception) {
                 view.mostrarError("Error de conexión: ${e.localizedMessage ?: "Error desconocido"}")
+            }
+        }
+    }
+    fun buscarAlumnoPorMatricula(matricula: String) {
+        if (matricula.isEmpty()) {
+            view.autocompletarCorreo("")
+            return
+        }
+
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                // Se asigna el resultado a la variable 'respuesta' ejecutándolo en el hilo E/S
+                val respuesta = withContext(Dispatchers.IO) {
+                    modelo.obtenerAlumno(matricula)
+                }
+
+                if (respuesta.isSuccessful && respuesta.body()?.exito == true) {
+                    val correoObtenido = respuesta.body()?.correo ?: ""
+                    view.autocompletarCorreo(correoObtenido)
+                } else {
+                    view.autocompletarCorreo("")
+                }
+            } catch (e: Exception) {
+                view.autocompletarCorreo("")
             }
         }
     }
