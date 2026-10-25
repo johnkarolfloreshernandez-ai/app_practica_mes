@@ -64,6 +64,22 @@ class RegistroActivity : AppCompatActivity() {
         txtNombreCurso.text = nombreCurso
         presenter.cargarDatosCurso(nombreCurso, urlImagen)
 
+        txtMatricula.addTextChangedListener(object : android.text.TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: android.text.Editable?) {
+                val matricula = s.toString().trim()
+
+                // Consulta automáticamente cuando la matrícula tenga la longitud completa (ej. 8 caracteres)
+                if (matricula.length >= 8) {
+                    presenter.buscarAlumnoPorMatricula(matricula)
+                } else {
+                    txtCorreo.setText("")
+                }
+            }
+        })
+
         // Listeners
         btnConfirmar.setOnClickListener(this::ejecutarRegistroCurso)
         btnCancelar.setOnClickListener { finish() }
@@ -112,5 +128,8 @@ class RegistroActivity : AppCompatActivity() {
             dia
         )
         datePicker.show()
+    }
+    fun autocompletarCorreo(correo: String) {
+        txtCorreo.setText(correo)
     }
 }
