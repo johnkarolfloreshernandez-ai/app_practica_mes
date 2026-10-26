@@ -3,7 +3,7 @@ import com.example.app_practica_mes.Modelo.DetalleCursoResponse
 
 import com.example.app_practica_mes.Modelo.RegistroRequest
 import com.example.app_practica_mes.Modelo.RegistroResponse
-import com.example.app_practica_mes.modelo.modelo.AlumnoResponse
+import com.example.app_practica_mes.modelo.AlumnoResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET

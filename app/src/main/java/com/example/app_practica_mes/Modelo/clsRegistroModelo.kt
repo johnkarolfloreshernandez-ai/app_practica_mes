@@ -1,6 +1,6 @@
 package com.example.app_practica_mes.Modelo
 
-import com.example.app_practica_mes.modelo.modelo.AlumnoResponse
+import com.example.app_practica_mes.modelo.AlumnoResponse
 import retrofit2.Response
 
 class clsRegistroModelo {
