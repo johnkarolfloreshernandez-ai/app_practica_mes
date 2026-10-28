@@ -4,6 +4,8 @@ import com.example.app_practica_mes.Modelo.DetalleCursoResponse
 import com.example.app_practica_mes.Modelo.RegistroRequest
 import com.example.app_practica_mes.Modelo.RegistroResponse
 import com.example.app_practica_mes.modelo.AlumnoResponse
+import com.example.app_practica_mes.modelo.dataCarrera
+import com.example.app_practica_mes.modelo.dataCatalogoCursos
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -18,6 +20,10 @@ interface ApiService {
     @GET("detalle_curso.php")
     suspend fun obtenerDetalleCurso(@Query("curso_id") cursoId: Int): Response<DetalleCursoResponse>
 
+    @GET("obtener_carreras.php")
+    suspend fun obtenerCarreras(): List<dataCarrera>
 
+    @GET("obtener_cursos.php")
+    suspend fun obtenerCursos(@Query("id_carrera") carreraId: Int): List<dataCatalogoCursos>
 
 }
