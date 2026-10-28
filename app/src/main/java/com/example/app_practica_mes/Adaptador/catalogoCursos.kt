@@ -8,14 +8,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.app_practica_mes.R // Asegúrate de importar el R de tu propio paquete, no de androidx
-import com.example.app_practica_mes.modelo.dataCatalogoCursos
+import com.example.app_practica_mes.Modelo.dataCatalogoCursos
+import com.example.app_practica_mes.R
 import com.example.app_practica_mes.Vista.MainActivity
 
 class catalogoCursos(
     private val activity: MainActivity,
     private var listaCatalogoCursos: List<dataCatalogoCursos>
-) : RecyclerView.Adapter<catalogoCursos.CursosViewHolder>() { // Corregido: referencia a CursosViewHolder directamente
+) : RecyclerView.Adapter<catalogoCursos.CursosViewHolder>() {
 
     class CursosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvNombreCurso: TextView = itemView.findViewById(R.id.txtNombreCurso)
@@ -34,12 +34,10 @@ class catalogoCursos(
     override fun onBindViewHolder(holder: CursosViewHolder, position: Int) {
         val curso = listaCatalogoCursos[position]
 
-        // Mapeo con los campos de tu modelo
         holder.tvNombreCurso.text = curso.nombre
         holder.tvSalon.text = curso.espacio
 
-        // Ruta base de tu servidor local
-        val baseUrl = "http://172.31.99.7/catalogocursos/"
+        val baseUrl = "http://10.248.187.59/practicaMes/"
         val urlImagen = baseUrl + curso.urlImagenPrincipal
 
         Glide.with(holder.itemView.context)
@@ -48,14 +46,12 @@ class catalogoCursos(
             .error(android.R.drawable.stat_notify_error)
             .into(holder.imagenCurso)
 
-        // Clic de Ver detalle
         holder.btnVerDetalle.setOnClickListener {
-            activity.seleccionarCurso(curso)
+            activity.presenter.seleccionarCurso(curso)
         }
 
-        // Clic de Registrarse
         holder.btnRegistrarse.setOnClickListener {
-            activity.registrarCurso(curso)
+            activity.presenter.registrarCurso(curso)
         }
     }
 

@@ -1,7 +1,7 @@
 package com.example.app_practica_mes.Presentador
 
 import android.util.Log
-import com.example.app_practica_mes.Modelo.RetrofitCliente
+
 import com.example.app_practica_mes.Modelo.clsRegistroModelo
 import com.example.app_practica_mes.Vista.RegistroActivity
 import kotlinx.coroutines.CoroutineScope
@@ -14,6 +14,9 @@ class clsRegistroPresentador (private val view: RegistroActivity) {
     private val modelo = clsRegistroModelo()
 
     fun cargarDatosCurso(nombreCurso: String, urlImagen: String) {
+        if (nombreCurso.isNotEmpty()) {
+            view.mostrarNombreCurso(nombreCurso)
+        }
         if (urlImagen.isNotEmpty()) {
             view.mostrarImagenCurso(urlImagen)
         }
@@ -57,7 +60,6 @@ class clsRegistroPresentador (private val view: RegistroActivity) {
 
         CoroutineScope(Dispatchers.Main).launch {
             try {
-                // Se asigna el resultado a la variable 'respuesta' ejecutándolo en el hilo E/S
                 val respuesta = withContext(Dispatchers.IO) {
                     modelo.obtenerAlumno(matricula)
                 }

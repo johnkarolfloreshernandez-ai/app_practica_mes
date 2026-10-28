@@ -1,5 +1,6 @@
 package com.example.app_practica_mes.Vista
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -15,17 +16,18 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app_practica_mes.Adaptador.catalogoCursos
+import com.example.app_practica_mes.Modelo.dataCarrera
+import com.example.app_practica_mes.Modelo.dataCatalogoCursos
 import com.example.app_practica_mes.Presentador.clsCarrerasPresentador
-import com.example.app_practica_mes.modelo.dataCarrera
-import com.example.app_practica_mes.modelo.dataCatalogoCursos
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var presenter: clsCarrerasPresentador
+     lateinit var presenter: clsCarrerasPresentador
     private lateinit var spinnerCarrera: Spinner
     private lateinit var recycleCursos: RecyclerView
     private lateinit var adapterCatalogoCurso: catalogoCursos
     private lateinit var btnVerRegistros: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        // IDs vinculados exactamente a tu layout activity_main.xml
+
         spinnerCarrera = findViewById(R.id.spinner6)
         recycleCursos = findViewById(R.id.Rclr_View)
         btnVerRegistros = findViewById(R.id.btn_registros)
@@ -76,13 +78,6 @@ class MainActivity : AppCompatActivity() {
         adapterCatalogoCurso.actualizarLista(cursos)
     }
 
-    fun seleccionarCurso(curso: dataCatalogoCursos) {
-        presenter.seleccionarCurso(curso)
-    }
-
-    fun registrarCurso(curso: dataCatalogoCursos) {
-        presenter.registrarCurso(curso)
-    }
 
     fun mostrarMensajeExito(id: Int, nombre: String) {
         Toast.makeText(this, "ID: $id - Seleccionaste: $nombre", Toast.LENGTH_SHORT).show()
@@ -91,4 +86,20 @@ class MainActivity : AppCompatActivity() {
     fun mostrarError(mensaje: String) {
         Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
     }
+    fun seleccionarCurso(curso: dataCatalogoCursos) {
+        val intent = Intent(this, DetalleCurso::class.java).apply {
+            putExtra("CURSO_ID", curso.id)
+        }
+        startActivity(intent)
+    }
+
+    fun registrarCurso(curso: dataCatalogoCursos) {
+        val intent = Intent(this, RegistroActivity::class.java).apply {
+            putExtra("CURSO_ID", curso.id)
+            putExtra("NOMBRE_CURSO", curso.nombre)
+            putExtra("IMAGEN_CURSO", "http://10.248.187.59/practicaMes/" + curso.urlImagenPrincipal)
+        }
+        startActivity(intent)
+
+}
 }

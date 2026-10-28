@@ -1,7 +1,5 @@
 package com.example.app_practica_mes.Modelo
 
-import com.example.app_practica_mes.modelo.dataCarrera
-
 class clsCarrerasModelo {
     suspend fun obtenerCarreras(): List<dataCarrera> {
         // Pedido a la base de datos a través de Retrofit

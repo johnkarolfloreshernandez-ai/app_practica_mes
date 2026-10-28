@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F5F5"
-    tools:context=".vista.MainActivity">
+    tools:context=".Vista.MainActivity">
 
     <!-- Barra Superior (Toolbar) -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
-        android:background="#0000FF"
+        android:background="#12579B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +25,7 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginStart="16dp"
-        android:contentDescription="Menú"
+        android:contentDescription="@string/desc_menu"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
         app:layout_constraintStart_toStartOf="@+id/toolbar2"
         app:layout_constraintTop_toTopOf="@+id/toolbar2"
@@ -37,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Catálogo de Cursos"
+        android:text="@string/titulo_catalogo"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -52,7 +53,7 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginEnd="12dp"
-        android:contentDescription="Usuario"
+        android:contentDescription="@string/desc_usuario"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
         app:layout_constraintEnd_toStartOf="@+id/img_mas"
         app:layout_constraintTop_toTopOf="@+id/toolbar2"
@@ -64,7 +65,7 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginEnd="16dp"
-        android:contentDescription="Más opciones"
+        android:contentDescription="@string/desc_mas"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
         app:layout_constraintEnd_toEndOf="@+id/toolbar2"
         app:layout_constraintTop_toTopOf="@+id/toolbar2"
@@ -92,7 +93,7 @@
             android:layout_height="40dp"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="12dp"
-            android:contentDescription="Configuración"
+            android:contentDescription="@string/desc_config"
             app:srcCompat="@android:drawable/ic_menu_manage" />
 
         <LinearLayout
@@ -104,7 +105,7 @@
                 android:id="@+id/txt_indicador"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Filtrar por carrera"
+                android:text="@string/filtrar_carrera"
                 android:textColor="#555555"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -140,7 +141,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="Ver Registros"
+        android:text="@string/ver_registros"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

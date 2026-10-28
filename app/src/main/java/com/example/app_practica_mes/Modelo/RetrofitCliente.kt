@@ -1,5 +1,4 @@
 package com.example.app_practica_mes.Modelo
-
 import com.example.app_practica_mes.interfaceApi.ApiService
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType

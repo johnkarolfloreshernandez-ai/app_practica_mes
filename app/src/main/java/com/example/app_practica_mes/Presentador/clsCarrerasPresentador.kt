@@ -2,8 +2,8 @@ package com.example.app_practica_mes.Presentador
 
 import com.example.app_practica_mes.Modelo.clsCarrerasModelo
 import com.example.app_practica_mes.Modelo.clsCatalogoCurso
-import com.example.app_practica_mes.modelo.dataCarrera
-import com.example.app_practica_mes.modelo.dataCatalogoCursos
+import com.example.app_practica_mes.Modelo.dataCarrera
+import com.example.app_practica_mes.Modelo.dataCatalogoCursos
 import com.example.app_practica_mes.Vista.MainActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -17,16 +17,15 @@ class clsCarrerasPresentador(private val vista: MainActivity) {
     fun iniciar() {
         CoroutineScope(Dispatchers.Main).launch {
             try {
+                // 1. Cargar la lista de carreras en el Spinner
                 listaCarreras = modelo.obtenerCarreras()
                 vista.mostrarCarrera(listaCarreras)
 
-                if (listaCarreras.isNotEmpty()) {
-                    // Nota: Si en dataCarrera se llama diferente, cámbialo aquí (ej. carrera.idCarrera)
-                    cargarCursos(0)
-                }
+                // 2. Cargar inmediatamente todos los cursos (id 0)
+                cargarCursos(0)
 
             } catch (e: Exception) {
-                vista.mostrarError("Error: " + e.localizedMessage)
+                vista.mostrarError("Error al iniciar: " + e.localizedMessage)
             }
         }
     }
@@ -34,7 +33,6 @@ class clsCarrerasPresentador(private val vista: MainActivity) {
     fun seleccionarCarrera(posicion: Int) {
         if (posicion >= 0 && posicion < listaCarreras.size) {
             val carrera = listaCarreras[posicion]
-            // Nota: Si en dataCarrera se llama diferente, cámbialo aquí (ej. carrera.idCarrera)
             cargarCursos(carrera.idCarrera)
         }
     }
@@ -56,9 +54,5 @@ class clsCarrerasPresentador(private val vista: MainActivity) {
 
     fun registrarCurso(curso: dataCatalogoCursos) {
         vista.registrarCurso(curso)
-    }
-
-    fun verRegistroDetalle(curso: dataCatalogoCursos) {
-
     }
 }

@@ -18,7 +18,7 @@ import com.example.app_practica_mes.R
 class RegistroActivity : AppCompatActivity() {
     private lateinit var presenter: clsRegistroPresentador
 
-    // Vistas asociadas al XML
+
     private lateinit var btnBack: ImageView
     private lateinit var imgCurso: ImageView
     private lateinit var txtNombreCurso: TextView
@@ -44,7 +44,7 @@ class RegistroActivity : AppCompatActivity() {
             insets
         }
 
-        // Enlace de vistas con IDs del XML
+
         btnBack = findViewById(R.id.btnBack)
         imgCurso = findViewById(R.id.imgCurso)
         txtNombreCurso = findViewById(R.id.txtNombreCurso)
@@ -54,7 +54,6 @@ class RegistroActivity : AppCompatActivity() {
         btnConfirmar = findViewById(R.id.btnConfirmar)
         btnCancelar = findViewById(R.id.btnCancelar)
 
-        // Inicializar Presentador
         presenter = clsRegistroPresentador(this)
 
         cursoId = intent.getIntExtra("CURSO_ID", 0)
@@ -128,6 +127,9 @@ class RegistroActivity : AppCompatActivity() {
             dia
         )
         datePicker.show()
+    }
+    fun mostrarNombreCurso(nombre: String) {
+        txtNombreCurso.text = nombre
     }
     fun autocompletarCorreo(correo: String) {
         txtCorreo.setText(correo)
