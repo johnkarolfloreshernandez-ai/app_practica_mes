@@ -12,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.example.app_practica_mes.Modelo.RetrofitCliente
 import com.example.app_practica_mes.R
+import com.bumptech.glide.Glide
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,13 +36,23 @@ class DetalleCurso : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalle_curso)
 
+        val rootView = findViewById<android.view.View>(android.R.id.content)
+
         val rootView = findViewById<View>(android.R.id.content)
         ViewCompat.setOnApplyWindowInsetsListener(rootView) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            val systemBars =
+                insets.getInsets(WindowInsetsCompat.Type.systemBars())
+
+            v.setPadding(
+                systemBars.left,
+                systemBars.top,
+                systemBars.right,
+                systemBars.bottom
+            )
             insets
         }
 
+        cursoId = intent.getIntExtra("CURSO_ID", 1)
         cursoId = intent.getIntExtra("CURSO_ID", 0)
 
         inicializarVistas()
@@ -63,12 +74,48 @@ class DetalleCurso : AppCompatActivity() {
         txtHoras = findViewById(R.id.txtHoras)
         txtDias = findViewById(R.id.txtDias)
 
-        btnBack.setOnClickListener { finish() }
+        btnBack.setOnClickListener {
+            finish()
+        }
     }
 
     private fun obtenerDetalleCurso(id: Int) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
+                val response =
+                    RetrofitCliente.apiService.obtenerDetalleCurso(id)
+
+                withContext(Dispatchers.Main) {
+                    if (response.isSuccessful) {
+                        val curso = response.body()
+
+                        if (curso != null) {
+                            txtNombreCurso.text = curso.nombre
+                            txtCodigo.text = "Código: ${curso.codigo}"
+                            txtDescripcion.text = curso.descripcion
+
+                            // Estos tres campos deben coincidir
+                            // con los nombres de tu modelo.
+                            // Se completarán al revisar DetalleCursoResponse.kt.
+
+                            Toast.makeText(
+                                this@DetalleCurso,
+                                "Detalles del curso cargados",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } else {
+                            Toast.makeText(
+                                this@DetalleCurso,
+                                "La respuesta no contiene datos",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    } else {
+                        Toast.makeText(
+                            this@DetalleCurso,
+                            "Error al cargar los detalles: ${response.code()}",
+                            Toast.LENGTH_SHORT
+                        ).show()
                 val response = RetrofitCliente.apiService.obtenerDetalleCurso(id)
 
                 withContext(Dispatchers.Main) {
@@ -96,6 +143,11 @@ class DetalleCurso : AppCompatActivity() {
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
+                    Toast.makeText(
+                        this@DetalleCurso,
+                        "Error de red: ${e.message}",
+                        Toast.LENGTH_LONG
+                    ).show()
                     Toast.makeText(this@DetalleCurso, "Error: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
                 }
             }

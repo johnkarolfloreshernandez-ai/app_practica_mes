@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="8dp"
+    android:background="@drawable/fondo_tarjeta_registro"
+    android:elevation="2dp">
+
+    <!-- Imagen -->
+    <ImageView
+        android:id="@+id/imgCursoRegistro"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="Imagen del curso"
+        android:src="@android:drawable/ic_menu_gallery" />
+
+    <!-- Información -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtNombreCursoRegistro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PROGRAMACIÓN AVANZADA"
+            android:textColor="#202938"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+        <!-- Código conservado por compatibilidad -->
+        <TextView
+            android:id="@+id/txtCodigoCursoRegistro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <!-- Inscritos y cupo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/txtInscritosCurso"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="48 inscritos"
+                android:textColor="#222222"
+                android:textSize="10sp"
+                android:maxLines="1" />
+
+            <TextView
+                android:id="@+id/txtCupoCurso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50 total"
+                android:textColor="#334155"
+                android:textSize="10sp"
+                android:gravity="end" />
+
+        </LinearLayout>
+
+        <!-- Barra de ocupación -->
+        <ProgressBar
+            android:id="@+id/barraInscritosCurso"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="7dp"
+            android:layout_marginTop="5dp"
+            android:max="100"
+            android:progress="0"
+            android:progressTint="#15549A"
+            android:progressBackgroundTint="#DDE3EA" />
+
+        <!-- Porcentaje conservado por compatibilidad -->
+        <TextView
+            android:id="@+id/txtPorcentajeCurso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="end"
+            android:text="0% ocupado"
+            android:textColor="#64748B"
+            android:textSize="10sp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,3 +1,4 @@
+
 package com.example.app_practica_mes.Presentador
 
 import android.util.Log
@@ -10,10 +11,14 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 
-class clsRegistroPresentador (private val view: RegistroActivity) {
+class clsRegistroPresentador(
+    private val view: RegistroActivity
+) {
+
     private val modelo = clsRegistroModelo()
 
     fun cargarDatosCurso(nombreCurso: String, urlImagen: String) {
+        if (urlImagen.isNotBlank()) {
         if (nombreCurso.isNotEmpty()) {
             view.mostrarNombreCurso(nombreCurso)
         }
@@ -22,8 +27,12 @@ class clsRegistroPresentador (private val view: RegistroActivity) {
         }
     }
 
-    fun realizarRegistro(cursoId: Int, matricula: String, fechaRegistro: String) {
-        if (cursoId <= 0 || matricula.isEmpty() || fechaRegistro.isEmpty()) {
+    fun realizarRegistro(
+        cursoId: Int,
+        matricula: String,
+        fechaRegistro: String
+    ) {
+        if (cursoId <= 0 || matricula.isBlank() || fechaRegistro.isBlank()) {
             view.mostrarError("Por favor, completa todos los campos solicitados")
             return
         }
@@ -31,29 +40,44 @@ class clsRegistroPresentador (private val view: RegistroActivity) {
         CoroutineScope(Dispatchers.Main).launch {
             try {
                 val respuesta = withContext(Dispatchers.IO) {
-                    modelo.registrarAlumnoCurso(cursoId, matricula, fechaRegistro)
+                    modelo.registrarAlumnoCurso(
+                        cursoId,
+                        matricula,
+                        fechaRegistro
+                    )
                 }
 
                 if (respuesta.isSuccessful) {
-                    val mensajeExito =
-                        respuesta.body()?.mensaje ?: "Inscripción registrada correctamente"
+                    val mensajeExito = respuesta.body()?.mensaje
+                        ?: "Inscripción registrada correctamente"
+
                     view.registroExitoso(mensajeExito)
                 } else {
                     val errorBody = respuesta.errorBody()?.string()
+
                     val mensajeError = try {
-                        JSONObject(errorBody ?: "").getString("error")
+                        JSONObject(errorBody ?: "").optString(
+                            "error",
+                            "Error al procesar la solicitud"
+                        )
                     } catch (e: Exception) {
                         "Error al procesar la solicitud"
                     }
+
                     view.mostrarError(mensajeError)
                 }
             } catch (e: Exception) {
-                view.mostrarError("Error de conexión: ${e.localizedMessage ?: "Error desconocido"}")
+                view.mostrarError(
+                    "Error de conexión: ${
+                        e.localizedMessage ?: "Error desconocido"
+                    }"
+                )
             }
         }
     }
+
     fun buscarAlumnoPorMatricula(matricula: String) {
-        if (matricula.isEmpty()) {
+        if (matricula.isBlank()) {
             view.autocompletarCorreo("")
             return
         }
@@ -64,8 +88,10 @@ class clsRegistroPresentador (private val view: RegistroActivity) {
                     modelo.obtenerAlumno(matricula)
                 }
 
-                if (respuesta.isSuccessful && respuesta.body()?.exito == true) {
-                    val correoObtenido = respuesta.body()?.correo ?: ""
+                if (respuesta.isSuccessful) {
+                    val correoObtenido =
+                        respuesta.body()?.correoInstitucional ?: ""
+
                     view.autocompletarCorreo(correoObtenido)
                 } else {
                     view.autocompletarCorreo("")
@@ -75,5 +101,4 @@ class clsRegistroPresentador (private val view: RegistroActivity) {
             }
         }
     }
-
 }

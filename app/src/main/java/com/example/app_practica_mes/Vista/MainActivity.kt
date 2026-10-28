@@ -39,6 +39,12 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val intent = android.content.Intent(
+            this,
+            VerRegistrosActivity::class.java
+        )
+
+
 
 
         spinnerCarrera = findViewById(R.id.spinner6)
