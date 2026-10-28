@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F2F4F7">
+
+    <!-- Encabezado -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="#15549A"
+        android:paddingStart="6dp"
+        android:paddingEnd="12dp">
+
+        <Button
+            android:id="@+id/btnRegresarRegistros"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="‹"
+            android:textSize="30sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#15549A"
+            android:contentDescription="Regresar" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:text="ESTADO DE INSCRIPCIONES"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+    </LinearLayout>
+
+    <!-- Filtro por carrera -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="12dp"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:background="@drawable/fondo_tarjeta_registro"
+        android:elevation="2dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⚙  Filtrar por carrera:"
+            android:textColor="#334155"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spCarrerasRegistros"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:backgroundTint="#15549A" />
+
+    </LinearLayout>
+
+    <!-- Total de inscritos -->
+    <TextView
+        android:id="@+id/txtTotalRegistros"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total: 0"
+        android:textColor="#222222"
+        android:textSize="13sp"
+        android:gravity="end"
+        android:paddingStart="12dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="8dp" />
+
+    <!-- Cargando -->
+    <ProgressBar
+        android:id="@+id/progresoRegistros"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <!-- Mensajes -->
+    <TextView
+        android:id="@+id/txtMensajeRegistros"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="12dp"
+        android:textColor="#444444"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+    <!-- Lista de cursos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCursosRegistros"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="8dp" />
+
+    <!-- Volver al catálogo -->
+    <Button
+        android:id="@+id/btnVolverCatalogoRegistros"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="#15549A"
+        android:text="VOLVER AL CATÁLOGO"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

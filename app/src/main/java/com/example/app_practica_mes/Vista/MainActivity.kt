@@ -18,9 +18,12 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val intent = Intent(this, DetalleCurso::class.java).apply {
-            putExtra("CURSO_ID", 1) // Enviamos el ID 1 para que PHP busque el curso en la BD
-        }
+        val intent = android.content.Intent(
+            this,
+            VerRegistrosActivity::class.java
+        )
+
+
 
         startActivity(intent)
         finish()
