@@ -22,4 +22,11 @@
 
     <!-- Descripcion de imagen -->
     <string name="imagen_curso_desc">Estudiantes trabajando en programación</string>
+    <string name="desc_menu">Menú de navegación</string>
+    <string name="titulo_catalogo">CATALOGO DE CURSOS</string>
+    <string name="desc_usuario">Icono de perfil de usuario</string>
+    <string name="desc_mas">Icono de opciones adicionales</string>
+    <string name="desc_config">Icono de configuración de filtro</string>
+    <string name="filtrar_carrera">Filtrar por Carrera:</string>
+    <string name="ver_registros">VER REGISTROS</string>
 </resources>
