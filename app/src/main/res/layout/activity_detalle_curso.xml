@@ -20,16 +20,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:contentDescription="@string/imagen_curso_desc" />
+                android:contentDescription="Imagen del curso" />
 
-            <!-- Boton para regresar -->
+            <!-- Botón para regresar -->
             <Button
                 android:id="@+id/btnBack"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_gravity="top|start"
                 android:layout_margin="12dp"
-                android:text="@string/btn_back"
+                android:text="Atrás"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp"
                 android:backgroundTint="#145A83"
@@ -39,111 +39,95 @@
 
         </FrameLayout>
 
-        <!-- Informacion del curso -->
+        <!-- Información del curso -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="18dp">
 
-            <!-- Nombre del curso -->
             <TextView
                 android:id="@+id/txtNombreCurso"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/nombre_curso"
                 android:textColor="#111111"
                 android:textStyle="bold"
                 android:textSize="22sp" />
 
-            <!-- Codigo -->
             <TextView
                 android:id="@+id/txtCodigo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="@string/codigo_curso"
                 android:textColor="#222222"
                 android:textSize="15sp" />
 
-            <!-- Titulo de descripcion -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
-                android:text="@string/titulo_descripcion"
+                android:text="Descripción"
                 android:textColor="#111111"
                 android:textStyle="bold"
                 android:textSize="16sp" />
 
-            <!-- Descripcion -->
             <TextView
                 android:id="@+id/txtDescripcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="@string/descripcion_curso"
                 android:textColor="#333333"
                 android:textSize="14sp"
                 android:lineSpacingExtra="3dp" />
 
-            <!-- Titulo del espacio -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
-                android:text="@string/titulo_espacio"
+                android:text="Ubicación"
                 android:textColor="#111111"
                 android:textStyle="bold"
                 android:textSize="16sp" />
 
-            <!-- Ubicacion -->
             <TextView
                 android:id="@+id/txtEspacio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="@string/espacio_curso"
                 android:textColor="#333333"
                 android:textSize="14sp" />
 
-            <!-- Titulo de horas -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:text="@string/titulo_horas"
+                android:text="Total de horas"
                 android:textColor="#111111"
                 android:textStyle="bold"
                 android:textSize="16sp" />
 
-            <!-- Total de horas -->
             <TextView
                 android:id="@+id/txtHoras"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="@string/horas_curso"
                 android:textColor="#333333"
                 android:textSize="14sp" />
 
-            <!-- Titulo de dias de atencion -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:text="@string/titulo_dias"
+                android:text="Horario de atención"
                 android:textColor="#111111"
                 android:textStyle="bold"
                 android:textSize="16sp" />
 
-            <!-- Dias y horario -->
             <TextView
                 android:id="@+id/txtDias"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="@string/dias_curso"
                 android:textColor="#333333"
                 android:textSize="14sp" />
 

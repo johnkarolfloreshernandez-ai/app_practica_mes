@@ -1,6 +1,8 @@
 
 package com.example.app_practica_mes.Presentador
 
+import android.util.Log
+
 import com.example.app_practica_mes.Modelo.clsRegistroModelo
 import com.example.app_practica_mes.Vista.RegistroActivity
 import kotlinx.coroutines.CoroutineScope
@@ -17,6 +19,10 @@ class clsRegistroPresentador(
 
     fun cargarDatosCurso(nombreCurso: String, urlImagen: String) {
         if (urlImagen.isNotBlank()) {
+        if (nombreCurso.isNotEmpty()) {
+            view.mostrarNombreCurso(nombreCurso)
+        }
+        if (urlImagen.isNotEmpty()) {
             view.mostrarImagenCurso(urlImagen)
         }
     }
