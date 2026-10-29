@@ -29,6 +29,7 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
+
         <activity
             android:name=".Vista.DetalleCurso"
             android:exported="false"
